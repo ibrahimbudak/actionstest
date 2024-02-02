@@ -1,4 +1,4 @@
-name: Deployment of Next.js Application
+name: test
 
 on:
   push:
