@@ -17,6 +17,7 @@ jobs:
         uses: webfactory/ssh-agent@v0.5.1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          
-      - name: Clone the repository
-        run: git clone https://github.com/Turkopat/actionstest.git
+
+      - name: SSH to the server and create file
+        run: |
+          ssh -o StrictHostKeyChecking=no root@101.44.36.21 "touch itworks.yaml"
