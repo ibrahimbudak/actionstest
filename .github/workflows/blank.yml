@@ -19,4 +19,4 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           
       - name: Clone the repository
-        run: git clone <Your Repository URL>
+        run: git clone https://github.com/Turkopat/actionstest.git
