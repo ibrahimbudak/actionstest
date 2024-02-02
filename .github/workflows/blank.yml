@@ -3,7 +3,7 @@ name: Deployment of Next.js Application
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
