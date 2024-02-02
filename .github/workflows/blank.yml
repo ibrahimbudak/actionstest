@@ -20,4 +20,4 @@ jobs:
 
       - name: SSH to the server and create file
         run: |
-          ssh -o StrictHostKeyChecking=no root@101.44.36.21 "touch itworks.yaml"
+          ssh -o StrictHostKeyChecking=no root@101.44.36.21 "touch ibrahimisinebak.yaml"
