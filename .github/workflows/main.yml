@@ -1,4 +1,4 @@
-name: Get Public IP
+name: Get Pubslic IP
 
 on:
   push:
