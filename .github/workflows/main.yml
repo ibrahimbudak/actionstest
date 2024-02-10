@@ -3,7 +3,7 @@ name: Get Pubslic IP
 on:
   push:
     branches:
-      - Master
+      - main
 
 jobs:
   set-env:
@@ -22,4 +22,5 @@ jobs:
           CLOUD_SDK_AK: ${{ secrets.CLOUD_SDK_AK }}
           CLOUD_SDK_SK: ${{ secrets.CLOUD_SDK_SK }}
           IP_ADDRESS: ${{ steps.get-ip.outputs.stdout }}
+          SG_ID: ${{ secrets.SG_ID }}
           
