@@ -31,7 +31,7 @@ if __name__ == "__main__":
             protocol="tcp",
             port_range_min=22,
             port_range_max=22,
-            remote_ip_prefix= stdout.strip()
+            remote_ip_prefix= ip.stdout.strip()
         )
         request.body = CreateSecurityGroupRuleRequestBody(
             security_group_rule=securityGroupRulebody
