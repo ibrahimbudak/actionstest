@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get Public IP
-        run: dig +short myip.opendns.com @resolver1.opendns.com
+        run: python --version
