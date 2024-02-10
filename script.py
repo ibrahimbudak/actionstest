@@ -15,20 +15,12 @@ if __name__ == "__main__":
 
     client = VpcClient.new_builder() \
         .with_credentials(credentials) \
-        .with_region(VpcRegion.value_of("ap-southeast-3")) \
+        .with_region(VpcRegion.value_of("tr-west-1")) \
         .build()
 
     try:
         request = CreateSecurityGroupRuleRequest()
-        securityGroupRulebody = CreateSecurityGroupRuleOption(
-            security_group_id="31a94852-e4ee-43b1-87fc-1f0b0c464b79",
-            direction="ingress",
-            protocol="TCP",
-            port_range_min=22,
-            port_range_max=22
-        )
         request.body = CreateSecurityGroupRuleRequestBody(
-            security_group_rule=securityGroupRulebody
         )
         response = client.create_security_group_rule(request)
         print(response)
