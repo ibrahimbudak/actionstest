@@ -10,11 +10,12 @@ jobs:
     name: Fetch Public IP
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Get Public IP
         run: dig +short myip.opendns.com @resolver1.opendns.com
         id: get-ip
       - name: Run Python Script
-        run: python /home/runner/work/actionstest/script.py
+        run: python script.py
         env:
           CLOUD_SDK_AK: ${{ secrets.MY_SECRET_KEY }}
           CLOUD_SDK_SK: ${{ secrets.ANOTHER_SECRET }}
