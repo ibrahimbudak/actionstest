@@ -14,7 +14,7 @@ jobs:
         run: dig +short myip.opendns.com @resolver1.opendns.com
         id: get-ip
       - name: Run Python Script
-        run: python script.py
+        run: python /home/runner/work/actionstest/script.py
         env:
           CLOUD_SDK_AK: ${{ secrets.MY_SECRET_KEY }}
           CLOUD_SDK_SK: ${{ secrets.ANOTHER_SECRET }}
