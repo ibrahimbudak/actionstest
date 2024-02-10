@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: get SDK
+        run: pip install huaweicloudsdkvpc
       - name: Get Public IP
         run: dig +short myip.opendns.com @resolver1.opendns.com
         id: get-ip
