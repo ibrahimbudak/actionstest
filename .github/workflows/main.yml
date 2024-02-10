@@ -3,7 +3,7 @@ name: Get Pubslic IP
 on:
   push:
     branches:
-      - main
+      - Master
 
 jobs:
   set-env:
