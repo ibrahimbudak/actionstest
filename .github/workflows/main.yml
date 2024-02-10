@@ -1,0 +1,14 @@
+name: Get Public IP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  get-ip:
+    name: Fetch Public IP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Public IP
+        run: dig +short myip.opendns.com @resolver1.opendns.com
