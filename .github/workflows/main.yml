@@ -15,13 +15,14 @@ jobs:
         run: pip install huaweicloudsdkvpc
       - name: Get Public IP
         id: public-ip
-        run: dig +short myip.opendns.com @resolver1.opendns.com >> $GITHUB_OUTPUT
+        run:  echo "ip_address=$(dig +short myip.opendns.com @resolver1.opendns.com)\n" >> $GITHUB_OUTPUT
+        
         
       - name: Run Python Script
         run: python script.py
         env:
           CLOUD_SDK_AK: ${{ secrets.CLOUD_SDK_AK }}
           CLOUD_SDK_SK: ${{ secrets.CLOUD_SDK_SK }}
-          IP_ADDRESS:  ${{ steps.public_ip.outputs.* }}
+          IP_ADDRESS:  ${{ steps.public_ip.outputs.ip_address }}
           SG_ID: ${{ secrets.SG_ID }}
           
