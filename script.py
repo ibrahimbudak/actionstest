@@ -4,6 +4,7 @@ from huaweicloudsdkcore.auth.credentials import BasicCredentials
 from huaweicloudsdkvpc.v2.region.vpc_region import VpcRegion
 from huaweicloudsdkcore.exceptions import exceptions
 from huaweicloudsdkvpc.v2 import *
+import subprocess
 
 if __name__ == "__main__":
     # The AK and SK used for authentication are hard-coded or stored in plaintext, which has great security risks. It is recommended that the AK and SK be stored in ciphertext in configuration files or environment variables and decrypted during use to ensure security.
@@ -11,7 +12,7 @@ if __name__ == "__main__":
     ak = __import__('os').getenv("CLOUD_SDK_AK")
     sk = __import__('os').getenv("CLOUD_SDK_SK")
     sg = __import__('os').getenv("SG_ID")
-    ip = __import__('os').getenv("IP_ADDRESS")
+    ip = subprocess.run("dig +short myip.opendns.com @resolver1.opendns.com" , shell=True, check=True, text=True, stdout=subprocess.PIPE)
     print(ip)
     
 
