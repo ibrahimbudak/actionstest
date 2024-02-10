@@ -12,6 +12,7 @@ if __name__ == "__main__":
     sk = __import__('os').getenv("CLOUD_SDK_SK")
     sg = __import__('os').getenv("SG_ID")
     ip = __import__('os').getenv("IP_ADDRESS")
+    print(ip)
     
 
     credentials = BasicCredentials(ak, sk) \
