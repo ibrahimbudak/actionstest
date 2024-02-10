@@ -19,7 +19,7 @@ jobs:
       - name: Run Python Script
         run: python script.py
         env:
-          CLOUD_SDK_AK: ${{ secrets.MY_SECRET_KEY }}
-          CLOUD_SDK_SK: ${{ secrets.ANOTHER_SECRET }}
+          CLOUD_SDK_AK: ${{ secrets.CLOUD_SDK_AK }}
+          CLOUD_SDK_SK: ${{ secrets.CLOUD_SDK_SK }}
           IP_ADDRESS: ${{ steps.get-ip.outputs.stdout }}
           
