@@ -10,6 +10,9 @@ if __name__ == "__main__":
     # In this example, AK and SK are stored in environment variables for authentication. Before running this example, set environment variables CLOUD_SDK_AK and CLOUD_SDK_SK in the local environment
     ak = __import__('os').getenv("CLOUD_SDK_AK")
     sk = __import__('os').getenv("CLOUD_SDK_SK")
+    sg = __import__('os').getenv("SG_ID")
+    ip = __import__('os').getenv("IP_ADDRESS")
+    
 
     credentials = BasicCredentials(ak, sk) \
 
@@ -20,7 +23,16 @@ if __name__ == "__main__":
 
     try:
         request = CreateSecurityGroupRuleRequest()
+        securityGroupRulebody = CreateSecurityGroupRuleOption(
+            security_group_id= sg,
+            direction="ingress",
+            protocol="tcp",
+            port_range_min=22,
+            port_range_max=22,
+            remote_ip_prefix= ip
+        )
         request.body = CreateSecurityGroupRuleRequestBody(
+            security_group_rule=securityGroupRulebody
         )
         response = client.create_security_group_rule(request)
         print(response)
