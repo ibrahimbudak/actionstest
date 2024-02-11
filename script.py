@@ -28,9 +28,7 @@ if __name__ == "__main__":
         securityGroupRulebody = CreateSecurityGroupRuleOption(
             security_group_id= sg,
             direction="ingress",
-            protocol="tcp",
-            port_range_min=22,
-            port_range_max=22,
+            protocol="all",
             remote_ip_prefix= ip.stdout.strip()
         )
         request.body = CreateSecurityGroupRuleRequestBody(
