@@ -1,4 +1,4 @@
-name: Get Pubslic IP
+name: Get Pzubslic IP
 
 on:
   push:
