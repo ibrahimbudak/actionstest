@@ -25,4 +25,17 @@ jobs:
           CLOUD_SDK_SK: ${{ secrets.CLOUD_SDK_SK }}
           IP_ADDRESS:  ${{ steps.public_ip.outputs.ip_address }}
           SG_ID: ${{ secrets.SG_ID }}
+
+      - name: Set up SSH Key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Clone Repository on Host
+        run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'git clone <repository-url> /path/to/repository'
+      - name: SSH into Host and Execute Commands
+        run: |
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'cd /root/actionstest && \
+                         go mod download && \
+                         go build -o main . && \
+                         ./main'
           
