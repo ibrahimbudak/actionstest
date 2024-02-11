@@ -3,7 +3,7 @@ name: Get Pubslic IP
 on:
   push:
     branches:
-      - Mastin
+      - main
 
 jobs:
   set-env:
@@ -25,13 +25,19 @@ jobs:
           CLOUD_SDK_SK: ${{ secrets.CLOUD_SDK_SK }}
           IP_ADDRESS:  ${{ steps.public_ip.outputs.ip_address }}
           SG_ID: ${{ secrets.SG_ID }}
+      - name: Install SSH Client
+        run: sudo apt-get install openssh-client -y
 
       - name: Set up SSH Key
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Install Go on Host
+        run: |
+          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'sudo apt-get update && sudo apt-get install -y golang'
       - name: Clone Repository on Host
-        run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'git clone <repository-url> /path/to/repository'
+        run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'git clone https://github.com/Turkopat/actionstest.git /root/actionstest'
       - name: SSH into Host and Execute Commands
         run: |
           ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'cd /root/actionstest && \
