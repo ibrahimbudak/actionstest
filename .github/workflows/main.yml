@@ -31,15 +31,12 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_ACTIONS }}
 
-      - name: Install Go on Host
-        run: |
-          ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'sudo apt-get update && sudo apt-get install -y golang'
-      - name: Clone Repository on Host
-        run: ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'git clone https://github.com/Turkopat/actionstest.git /root/actionstest'
-      - name: SSH into Host and Execute Commands
-        run: |
-          ssh root@${{ secrets.SSH_HOST }} 'cd /root/actionstest && \
-                         go mod download && \
-                         go build -o main . && \
-                         ./main'
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+          script: sudo apt-get update && sudo apt-get install -y golang
           
