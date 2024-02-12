@@ -35,7 +35,7 @@ if __name__ == "__main__":
             security_group_rule=securityGroupRulebody
         )
         response = client.create_security_group_rule(request)
-        print(response)
+        print(response.security_group_rule.id)
     except exceptions.ClientRequestException as e:
         print(e.status_code)
         print(e.request_id)
