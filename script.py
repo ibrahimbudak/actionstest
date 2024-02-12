@@ -26,18 +26,20 @@ if __name__ == "__main__":
     print("HATA")
     try:
         request = CreateSecurityGroupRuleRequest()
+        print("HATA1")
         securityGroupRulebody = CreateSecurityGroupRuleOption(
             security_group_id= sg,
             direction="ingress",
             protocol="tcp",
             remote_ip_prefix= ip.stdout.strip()
         )
+        print("HATA2")
         request.body = CreateSecurityGroupRuleRequestBody(
             security_group_rule=securityGroupRulebody
         )
+        print("HATA3")
         response = client.create_security_group_rule(request)
-        print("Response alindi")
-        print(response)
+        print("HATA4")
         __import__('os').environ['SG_RULE_ID'] = response.security_group_rule.id
         sg_id = __import__('os').getenv("SG_RULE_ID")
         print(sg_id)
