@@ -25,18 +25,6 @@ jobs:
           CLOUD_SDK_SK: ${{ secrets.CLOUD_SDK_SK }}
           IP_ADDRESS:  ${{ steps.public_ip.outputs.ip_address }}
           SG_ID: ${{ secrets.SG_ID }}
-
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_ACTIONS }}
-
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: 22
-          script: sudo apt-get update && sudo apt-get install -y golang
+      - name: Run Python Script2
+        run: python script2.py
           
