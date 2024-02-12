@@ -14,7 +14,8 @@ if __name__ == "__main__":
     sg = __import__('os').getenv("SG_ID")
     ip = subprocess.run("dig +short myip.opendns.com @resolver1.opendns.com" , shell=True, check=True, text=True, stdout=subprocess.PIPE)
     print(ip)
-    
+    print("ak:" + ak)
+    print("sk:" +sk)
 
     credentials = BasicCredentials(ak, sk) \
 
@@ -35,6 +36,7 @@ if __name__ == "__main__":
             security_group_rule=securityGroupRulebody
         )
         response = client.create_security_group_rule(request)
+        print("Response alindi")
         print(response + "Merhaba")
         __import__('os').environ['SG_RULE_ID'] = response.security_group_rule.id
         sg_id = __import__('os').getenv("SG_RULE_ID")
