@@ -11,8 +11,8 @@ import subprocess
 if __name__ == "__main__":
     # The AsdfaK and SK used for authentication are hard-coded or stored in plaintext, which has great security risks. It is recommended that the AK and SK be stored in ciphertext in configuration files or environment variables and decrypted during use to ensure security.
     # In this example, AK and SK are stored in environment variables for authentication. Before running this example, set environment variables CLOUD_SDK_AK and CLOUD_SDK_SK in the local environment
-    ak = "4XQV4HPQVZXFQYXECQFF"
-    sk = "rSYIcr8MEfu0GFh5PMrNt59eSwEdMtSmcMA5B1yU"
+    ak = __import__('os').getenv("CLOUD_SDK_AK")
+    sk = __import__('os').getenv("CLOUD_SDK_SK")
     sg = "04113e13-66ec-4acc-ad0e-e75ae981dcd8"
     ip = "192.168.0.22"
     print("ak:" + ak)
