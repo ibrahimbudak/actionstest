@@ -23,7 +23,7 @@ if __name__ == "__main__":
         .with_credentials(credentials) \
         .with_region(VpcRegion.value_of("tr-west-1")) \
         .build()
-    print("HATA")
+    print(client)
     try:
         request = CreateSecurityGroupRuleRequest()
         print("HATA1")
