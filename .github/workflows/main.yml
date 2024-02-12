@@ -33,5 +33,5 @@ jobs:
         env:
           CLOUD_SDK_AK: ${{ secrets.CLOUD_SDK_AK }}
           CLOUD_SDK_SK: ${{ secrets.CLOUD_SDK_SK }}
-          SG_RULE_ID:  $SG_RULE_ID
+          SG_RULE_ID:  $sg_rule_id
           
