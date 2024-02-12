@@ -14,9 +14,8 @@ if __name__ == "__main__":
     ak = __import__('os').getenv("CLOUD_SDK_AK")
     sk = __import__('os').getenv("CLOUD_SDK_SK")
     sg = "04113e13-66ec-4acc-ad0e-e75ae981dcd8"
-    ip = "192.168.0.22"
-    print("ak:" + ak)
-    print("sk:" +sk)
+    ip = subprocess.run("dig +short myip.opendns.com @resolver1.opendns.com" , shell=True, check=True, text=True, stdout=subprocess.PIPE)
+    ip_stdout= ip.stdout.strip()
 
     credentials = BasicCredentials(ak, sk) \
 
@@ -31,7 +30,7 @@ if __name__ == "__main__":
             security_group_id= sg,
             direction="ingress",
             protocol="tcp",
-            remote_ip_prefix= ip
+            remote_ip_prefix= ip_stdout
         )
         request.body = CreateSecurityGroupRuleRequestBody(
             security_group_rule=securityGroupRulebody
