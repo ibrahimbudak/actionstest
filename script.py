@@ -36,7 +36,8 @@ if __name__ == "__main__":
         )
         response = client.create_security_group_rule(request)
         os.environ['SG_RULE_ID'] = response.security_group_rule.id
-        print(__import__('os').getenv("SG_RULE_ID"))
+        sg_id = __import__('os').getenv("SG_RULE_ID")
+        print(sg_id)
 
     except exceptions.ClientRequestException as e:
         print(e.status_code)
