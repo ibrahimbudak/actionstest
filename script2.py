@@ -12,7 +12,7 @@ if __name__ == "__main__":
     ak = __import__('os').getenv("CLOUD_SDK_AK")
     sk = __import__('os').getenv("CLOUD_SDK_SK")
     sg = __import__('os').getenv("SG_RULE_ID")
-
+    print(sg)
     credentials = BasicCredentials(ak, sk) \
 
     client = VpcClient.new_builder() \
