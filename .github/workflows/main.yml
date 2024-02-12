@@ -30,7 +30,9 @@ jobs:
 
           
       - name: Run Python Script2
-        run: python script2.py
+        run: |
+          echo $SG_RULE_ID
+          python script2.py
         env:
           CLOUD_SDK_AK: ${{ secrets.CLOUD_SDK_AK }}
           CLOUD_SDK_SK: ${{ secrets.CLOUD_SDK_SK }}
