@@ -13,9 +13,6 @@ jobs:
       - uses: actions/checkout@v1
       - name: get SDK
         run: pip install huaweicloudsdkvpc
-      - name: Get Public IP
-        id: public-ip
-        run:  echo "ip_address=$(dig +short myip.opendns.com @resolver1.opendns.com)" >> $GITHUB_OUTPUT
         
         
       - name: Run Python Script
@@ -23,7 +20,7 @@ jobs:
         run: |
           python script.py
           echo $SG_RULE_ID
-          echo "sg_rule_id=($SG_RULE_ID)" >> $GITHUB_ENV 
+          echo "sg_rule_id=$SG_RULE_ID" >> $GITHUB_ENV 
         env:
           CLOUD_SDK_AK: ${{ secrets.CLOUD_SDK_AK }}
           CLOUD_SDK_SK: ${{ secrets.CLOUD_SDK_SK }}
@@ -36,5 +33,5 @@ jobs:
         env:
           CLOUD_SDK_AK: ${{ secrets.CLOUD_SDK_AK }}
           CLOUD_SDK_SK: ${{ secrets.CLOUD_SDK_SK }}
-          SG_RULE_ID:  ${{ steps.first_id.outputs.sg_rule_id }}
+          SG_RULE_ID:  $SG_RULE_ID
           
